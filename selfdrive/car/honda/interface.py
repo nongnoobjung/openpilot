@@ -15,7 +15,6 @@ A_ACC_MAX = max(_A_CRUISE_MAX_V_FOLLOWING)
 
 ButtonType = car.CarState.ButtonEvent.Type
 EventName = car.CarEvent.EventName
-GearShifter = car.CarState.GearShifter
 
 
 def compute_gb_honda(accel, speed):
@@ -499,7 +498,7 @@ class CarInterface(CarInterfaceBase):
 
     extraGears = []
     if not (self.CS.CP.openpilotLongitudinalControl or self.CS.CP.enableGasInterceptor):
-      extraGears = [GearShifter.sport, GearShifter.low]
+      extraGears = [car.CarState.GearShifter.sport, car.CarState.GearShifter.low]
 
     # events
     events = self.create_common_events(ret, extra_gears=extraGears, pcm_enable=False)
