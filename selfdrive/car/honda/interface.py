@@ -497,11 +497,11 @@ class CarInterface(CarInterfaceBase):
       buttonEvents.append(be)
     ret.buttonEvents = buttonEvents
 
-    # events
     extraGears = []
-    if not (self.CS.CP.openpilotLongitudinalControl or ret.enableGasInterceptor):
+    if not (self.CS.CP.openpilotLongitudinalControl or self.CS.CP.enableGasInterceptor):
       extraGears = [GearShifter.sport, GearShifter.low]
-    
+
+    # events
     events = self.create_common_events(ret, extra_gears=extraGears, pcm_enable=False)
     if self.CS.brake_error:
       events.add(EventName.brakeUnavailable)
